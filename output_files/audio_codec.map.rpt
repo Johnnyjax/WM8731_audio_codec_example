@@ -1,0 +1,742 @@
+Analysis & Synthesis report for audio_codec
+Wed Jan 29 20:07:17 2020
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |codec_test|state_reg
+ 10. State Machine - |codec_test|debounce:debounce_unit2|state_reg
+ 11. State Machine - |codec_test|debounce:debounce_unit1|state_reg
+ 12. State Machine - |codec_test|debounce:debounce_unit0|state_reg
+ 13. State Machine - |codec_test|codec_top:codec_unit|i2c:i2c_unit|state_reg
+ 14. Registers Removed During Synthesis
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Registers Packed Into Inferred Megafunctions
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0|altsyncram_k1h1:auto_generated
+ 20. Parameter Settings for User Entity Instance: Top-level Entity: |codec_test
+ 21. Parameter Settings for User Entity Instance: codec_top:codec_unit
+ 22. Parameter Settings for User Entity Instance: codec_top:codec_unit|fifo:fifo_adc_unit
+ 23. Parameter Settings for User Entity Instance: codec_top:codec_unit|fifo:fifo_dac_unit
+ 24. Parameter Settings for User Entity Instance: altera_one_port_ram:ram_unit
+ 25. Parameter Settings for Inferred Entity Instance: altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0
+ 26. altsyncram Parameter Settings by Entity Instance
+ 27. Port Connectivity Checks: "debounce:debounce_unit2"
+ 28. Port Connectivity Checks: "debounce:debounce_unit1"
+ 29. Port Connectivity Checks: "debounce:debounce_unit0"
+ 30. Port Connectivity Checks: "codec_top:codec_unit|fifo:fifo_dac_unit"
+ 31. Port Connectivity Checks: "codec_top:codec_unit|fifo:fifo_adc_unit"
+ 32. Port Connectivity Checks: "codec_top:codec_unit|i2c:i2c_unit"
+ 33. Port Connectivity Checks: "codec_top:codec_unit"
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jan 29 20:07:17 2020           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; audio_codec                                     ;
+; Top-level Entity Name              ; codec_test                                      ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 1,301                                           ;
+;     Total combinational functions  ; 745                                             ;
+;     Dedicated logic registers      ; 777                                             ;
+; Total registers                    ; 777                                             ;
+; Total pins                         ; 15                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 131,072                                         ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C20F484C7       ;                    ;
+; Top-level entity name                                                      ; codec_test         ; audio_codec        ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                    ;
++--------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path     ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                            ; Library ;
++--------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+; i2c.vhd                              ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/i2c.vhd                              ;         ;
+; adc_dac.vhd                          ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/adc_dac.vhd                          ;         ;
+; codec_top.vhd                        ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/codec_top.vhd                        ;         ;
+; fifo.vhd                             ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/fifo.vhd                             ;         ;
+; codec_test.vhd                       ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/codec_test.vhd                       ;         ;
+; output_files/debounce.vhd            ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/output_files/debounce.vhd            ;         ;
+; output_files/altera_one_port_ram.vhd ; yes             ; User VHDL File               ; C:/Users/John/Documents/myFpgaProjects/audio_codec/output_files/altera_one_port_ram.vhd ;         ;
+; altsyncram.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                        ;         ;
+; stratix_ram_block.inc                ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                 ;         ;
+; lpm_mux.inc                          ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                           ;         ;
+; lpm_decode.inc                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                        ;         ;
+; aglobal130.inc                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                        ;         ;
+; a_rdenreg.inc                        ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                         ;         ;
+; altrom.inc                           ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                            ;         ;
+; altram.inc                           ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                            ;         ;
+; altdpram.inc                         ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                          ;         ;
+; db/altsyncram_k1h1.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/John/Documents/myFpgaProjects/audio_codec/db/altsyncram_k1h1.tdf               ;         ;
++--------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 1,301    ;
+;                                             ;          ;
+; Total combinational functions               ; 745      ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 479      ;
+;     -- 3 input functions                    ; 141      ;
+;     -- <=2 input functions                  ; 125      ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 658      ;
+;     -- arithmetic mode                      ; 87       ;
+;                                             ;          ;
+; Total registers                             ; 777      ;
+;     -- Dedicated logic registers            ; 777      ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 15       ;
+; Total memory bits                           ; 131072   ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+; Maximum fan-out node                        ; CLOCK_50 ;
+; Maximum fan-out                             ; 809      ;
+; Total fan-out                               ; 6099     ;
+; Average fan-out                             ; 3.89     ;
++---------------------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                 ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                          ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
+; |codec_test                               ; 745 (88)          ; 777 (46)     ; 131072      ; 0            ; 0       ; 0         ; 15   ; 0            ; |codec_test                                                                                  ; work         ;
+;    |altera_one_port_ram:ram_unit|         ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|altera_one_port_ram:ram_unit                                                     ; work         ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0                                ; work         ;
+;          |altsyncram_k1h1:auto_generated| ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0|altsyncram_k1h1:auto_generated ; work         ;
+;    |codec_top:codec_unit|                 ; 461 (0)           ; 656 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|codec_top:codec_unit                                                             ; work         ;
+;       |adc_dac:dac_adc_unit|              ; 172 (172)         ; 76 (76)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|codec_top:codec_unit|adc_dac:dac_adc_unit                                        ; work         ;
+;       |fifo:fifo_adc_unit|                ; 184 (184)         ; 264 (264)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|codec_top:codec_unit|fifo:fifo_adc_unit                                          ; work         ;
+;       |fifo:fifo_dac_unit|                ; 26 (26)           ; 264 (264)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|codec_top:codec_unit|fifo:fifo_dac_unit                                          ; work         ;
+;       |i2c:i2c_unit|                      ; 79 (79)           ; 52 (52)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|codec_top:codec_unit|i2c:i2c_unit                                                ; work         ;
+;    |debounce:debounce_unit0|              ; 64 (64)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|debounce:debounce_unit0                                                          ; work         ;
+;    |debounce:debounce_unit1|              ; 65 (65)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|debounce:debounce_unit1                                                          ; work         ;
+;    |debounce:debounce_unit2|              ; 67 (67)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |codec_test|debounce:debounce_unit2                                                          ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                  ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; Name                                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0|altsyncram_k1h1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 4096         ; 32           ; 4096         ; 32           ; 131072 ; None ;
++---------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |codec_test|state_reg                                                                                                                                                                                ;
++--------------------------+-----------------------+-----------------+-----------------+-----------------+--------------------------+------------------------+--------------------+-----------------+------------------+
+; Name                     ; state_reg.config_done ; state_reg.wait3 ; state_reg.wait2 ; state_reg.wait1 ; state_reg.playback_state ; state_reg.sample_state ; state_reg.next_reg ; state_reg.wait0 ; state_reg.config ;
++--------------------------+-----------------------+-----------------+-----------------+-----------------+--------------------------+------------------------+--------------------+-----------------+------------------+
+; state_reg.config         ; 0                     ; 0               ; 0               ; 0               ; 0                        ; 0                      ; 0                  ; 0               ; 0                ;
+; state_reg.wait0          ; 0                     ; 0               ; 0               ; 0               ; 0                        ; 0                      ; 0                  ; 1               ; 1                ;
+; state_reg.next_reg       ; 0                     ; 0               ; 0               ; 0               ; 0                        ; 0                      ; 1                  ; 0               ; 1                ;
+; state_reg.sample_state   ; 0                     ; 0               ; 0               ; 0               ; 0                        ; 1                      ; 0                  ; 0               ; 1                ;
+; state_reg.playback_state ; 0                     ; 0               ; 0               ; 0               ; 1                        ; 0                      ; 0                  ; 0               ; 1                ;
+; state_reg.wait1          ; 0                     ; 0               ; 0               ; 1               ; 0                        ; 0                      ; 0                  ; 0               ; 1                ;
+; state_reg.wait2          ; 0                     ; 0               ; 1               ; 0               ; 0                        ; 0                      ; 0                  ; 0               ; 1                ;
+; state_reg.wait3          ; 0                     ; 1               ; 0               ; 0               ; 0                        ; 0                      ; 0                  ; 0               ; 1                ;
+; state_reg.config_done    ; 1                     ; 0               ; 0               ; 0               ; 0                        ; 0                      ; 0                  ; 0               ; 1                ;
++--------------------------+-----------------------+-----------------+-----------------+-----------------+--------------------------+------------------------+--------------------+-----------------+------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |codec_test|debounce:debounce_unit2|state_reg                        ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; Name            ; state_reg.wait1 ; state_reg.one ; state_reg.wait0 ; state_reg.zero ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; state_reg.zero  ; 0               ; 0             ; 0               ; 0              ;
+; state_reg.wait0 ; 0               ; 0             ; 1               ; 1              ;
+; state_reg.one   ; 0               ; 1             ; 0               ; 1              ;
+; state_reg.wait1 ; 1               ; 0             ; 0               ; 1              ;
++-----------------+-----------------+---------------+-----------------+----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |codec_test|debounce:debounce_unit1|state_reg                        ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; Name            ; state_reg.wait1 ; state_reg.one ; state_reg.wait0 ; state_reg.zero ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; state_reg.zero  ; 0               ; 0             ; 0               ; 0              ;
+; state_reg.wait0 ; 0               ; 0             ; 1               ; 1              ;
+; state_reg.one   ; 0               ; 1             ; 0               ; 1              ;
+; state_reg.wait1 ; 1               ; 0             ; 0               ; 1              ;
++-----------------+-----------------+---------------+-----------------+----------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |codec_test|debounce:debounce_unit0|state_reg                        ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; Name            ; state_reg.wait1 ; state_reg.one ; state_reg.wait0 ; state_reg.zero ;
++-----------------+-----------------+---------------+-----------------+----------------+
+; state_reg.zero  ; 0               ; 0             ; 0               ; 0              ;
+; state_reg.wait0 ; 0               ; 0             ; 1               ; 1              ;
+; state_reg.one   ; 0               ; 1             ; 0               ; 1              ;
+; state_reg.wait1 ; 1               ; 0             ; 0               ; 1              ;
++-----------------+-----------------+---------------+-----------------+----------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |codec_test|codec_top:codec_unit|i2c:i2c_unit|state_reg                                                                                                                                                                     ;
++---------------------+----------------+----------------+-------------------+----------------+----------------+----------------+-----------------+-----------------+-----------------+---------------------+-----------------+----------------+
+; Name                ; state_reg.turn ; state_reg.stop ; state_reg.scl_end ; state_reg.ack3 ; state_reg.ack2 ; state_reg.ack1 ; state_reg.data3 ; state_reg.data2 ; state_reg.data1 ; state_reg.scl_begin ; state_reg.start ; state_reg.idle ;
++---------------------+----------------+----------------+-------------------+----------------+----------------+----------------+-----------------+-----------------+-----------------+---------------------+-----------------+----------------+
+; state_reg.idle      ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 0              ;
+; state_reg.start     ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 1               ; 1              ;
+; state_reg.scl_begin ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 1                   ; 0               ; 1              ;
+; state_reg.data1     ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 1               ; 0                   ; 0               ; 1              ;
+; state_reg.data2     ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 1               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.data3     ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 1               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.ack1      ; 0              ; 0              ; 0                 ; 0              ; 0              ; 1              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.ack2      ; 0              ; 0              ; 0                 ; 0              ; 1              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.ack3      ; 0              ; 0              ; 0                 ; 1              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.scl_end   ; 0              ; 0              ; 1                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.stop      ; 0              ; 1              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
+; state_reg.turn      ; 1              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0               ; 0               ; 0               ; 0                   ; 0               ; 1              ;
++---------------------+----------------+----------------+-------------------+----------------+----------------+----------------+-----------------+-----------------+-----------------+---------------------+-----------------+----------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; i2c_packet_reg[7,14..17,19,22,23]      ; Merged with i2c_packet_reg[13]         ;
+; i2c_packet_reg[20,21]                  ; Merged with i2c_packet_reg[18]         ;
+; i2c_packet_reg[13]                     ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 11 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 777   ;
+; Number of registers using Synchronous Clear  ; 8     ;
+; Number of registers using Synchronous Load   ; 42    ;
+; Number of registers using Asynchronous Clear ; 777   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 614   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------+
+; Inverted Register Statistics                                ;
++---------------------------------------------------+---------+
+; Inverted Register                                 ; Fan out ;
++---------------------------------------------------+---------+
+; codec_top:codec_unit|i2c:i2c_unit|sclk_reg        ; 1       ;
+; codec_top:codec_unit|fifo:fifo_adc_unit|empty_reg ; 5       ;
+; codec_top:codec_unit|fifo:fifo_dac_unit|empty_reg ; 3       ;
+; codec_top:codec_unit|i2c:i2c_unit|sdat_reg        ; 1       ;
+; codec_top:codec_unit|i2c:i2c_unit|ack_reg         ; 3       ;
+; vol_reg[6]                                        ; 2       ;
+; vol_reg[5]                                        ; 2       ;
+; vol_reg[4]                                        ; 2       ;
+; vol_reg[3]                                        ; 2       ;
+; vol_reg[0]                                        ; 2       ;
+; Total number of inverted registers = 10           ;         ;
++---------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                 ;
++----------------------------------------------+----------------------------------------+------+
+; Register Name                                ; Megafunction                           ; Type ;
++----------------------------------------------+----------------------------------------+------+
+; altera_one_port_ram:ram_unit|data_reg[0..31] ; altera_one_port_ram:ram_unit|ram_rtl_0 ; RAM  ;
++----------------------------------------------+----------------------------------------+------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+; 5:1                ; 3 bits    ; 9 LEs         ; 0 LEs                ; 9 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|fifo:fifo_adc_unit|r_ptr_reg[0]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 0 LEs                ; 9 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|fifo:fifo_dac_unit|w_ptr_reg[0]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 0 LEs                ; 9 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|fifo:fifo_adc_unit|w_ptr_reg[0]     ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 0 LEs                ; 9 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|fifo:fifo_dac_unit|r_ptr_reg[1]     ;
+; 10:1               ; 31 bits   ; 186 LEs       ; 186 LEs              ; 0 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|adc_dac:dac_adc_unit|dac_buf_reg[2] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |codec_test|codec_top:codec_unit|i2c:i2c_unit|byte_reg[0]            ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 3 LEs                ; 15 LEs                 ; Yes        ; |codec_test|codec_top:codec_unit|i2c:i2c_unit|bit_reg[2]             ;
+; 10:1               ; 23 bits   ; 138 LEs       ; 23 LEs               ; 115 LEs                ; Yes        ; |codec_test|codec_top:codec_unit|i2c:i2c_unit|data_reg[22]           ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |codec_test|codec_top:codec_unit|i2c:i2c_unit|c_reg[6]               ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |codec_test|i2c_packet_next                                          ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |codec_test|Selector45                                               ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; No         ; |codec_test|vol_next[6]                                              ;
+; 8:1                ; 32 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |codec_test|codec_top:codec_unit|fifo:fifo_adc_unit|Mux12            ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; No         ; |codec_test|Selector17                                               ;
+; 8:1                ; 21 bits   ; 105 LEs       ; 42 LEs               ; 63 LEs                 ; No         ; |codec_test|debounce:debounce_unit1|Selector5                        ;
+; 8:1                ; 21 bits   ; 105 LEs       ; 42 LEs               ; 63 LEs                 ; No         ; |codec_test|debounce:debounce_unit2|Selector4                        ;
+; 8:1                ; 21 bits   ; 105 LEs       ; 42 LEs               ; 63 LEs                 ; No         ; |codec_test|debounce:debounce_unit0|Selector19                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |codec_test|debounce:debounce_unit1|Selector1                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |codec_test|debounce:debounce_unit2|Selector1                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |codec_test|debounce:debounce_unit0|Selector1                        ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |codec_test|Selector23                                               ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |codec_test|debounce:debounce_unit1|Selector0                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |codec_test|debounce:debounce_unit2|Selector0                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |codec_test|debounce:debounce_unit0|Selector0                        ;
+; 12:1               ; 3 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |codec_test|Selector31                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Source assignments for altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0|altsyncram_k1h1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                        ;
++---------------------------------+--------------------+------+-------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                         ;
++---------------------------------+--------------------+------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |codec_test ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; FIFO_SIZE      ; 3     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: codec_top:codec_unit ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; fifo_size      ; 3     ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: codec_top:codec_unit|fifo:fifo_adc_unit ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; b              ; 32    ; Signed Integer                                              ;
+; w              ; 3     ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: codec_top:codec_unit|fifo:fifo_dac_unit ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; b              ; 32    ; Signed Integer                                              ;
+; w              ; 3     ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: altera_one_port_ram:ram_unit ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; addr_width     ; 12    ; Signed Integer                                   ;
+; data_width     ; 32    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------+----------------------------------------+
+; Parameter Name                     ; Value                ; Type                                   ;
++------------------------------------+----------------------+----------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                         ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                ;
+; WIDTH_A                            ; 32                   ; Untyped                                ;
+; WIDTHAD_A                          ; 12                   ; Untyped                                ;
+; NUMWORDS_A                         ; 4096                 ; Untyped                                ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                ;
+; WIDTH_B                            ; 32                   ; Untyped                                ;
+; WIDTHAD_B                          ; 12                   ; Untyped                                ;
+; NUMWORDS_B                         ; 4096                 ; Untyped                                ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                ;
+; CBXI_PARAMETER                     ; altsyncram_k1h1      ; Untyped                                ;
++------------------------------------+----------------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                              ;
++-------------------------------------------+---------------------------------------------------+
+; Name                                      ; Value                                             ;
++-------------------------------------------+---------------------------------------------------+
+; Number of entity instances                ; 1                                                 ;
+; Entity Instance                           ; altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                         ;
+;     -- WIDTH_A                            ; 32                                                ;
+;     -- NUMWORDS_A                         ; 4096                                              ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                      ;
+;     -- WIDTH_B                            ; 32                                                ;
+;     -- NUMWORDS_B                         ; 4096                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                            ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                      ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                              ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                          ;
++-------------------------------------------+---------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debounce:debounce_unit2"                                                                ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; db_level ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debounce:debounce_unit1"                                                                ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; db_level ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debounce:debounce_unit0"                                                                ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; db_level ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "codec_top:codec_unit|fifo:fifo_dac_unit"                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; empty ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "codec_top:codec_unit|fifo:fifo_adc_unit"                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; full ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "codec_top:codec_unit|i2c:i2c_unit"                                                      ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; i2c_fail ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "codec_top:codec_unit"                                                                      ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; i2c_idle    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; sample_tick ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Jan 29 20:07:10 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off audio_codec -c audio_codec
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file i2c.vhd
+    Info (12022): Found design unit 1: i2c-arch
+    Info (12023): Found entity 1: i2c
+Info (12021): Found 2 design units, including 1 entities, in source file adc_dac.vhd
+    Info (12022): Found design unit 1: adc_dac-arch
+    Info (12023): Found entity 1: adc_dac
+Info (12021): Found 2 design units, including 1 entities, in source file codec_top.vhd
+    Info (12022): Found design unit 1: codec_top-arch
+    Info (12023): Found entity 1: codec_top
+Info (12021): Found 2 design units, including 1 entities, in source file fifo.vhd
+    Info (12022): Found design unit 1: fifo-arch
+    Info (12023): Found entity 1: fifo
+Info (12021): Found 2 design units, including 1 entities, in source file codec_test.vhd
+    Info (12022): Found design unit 1: codec_test-arch
+    Info (12023): Found entity 1: codec_test
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/debounce.vhd
+    Info (12022): Found design unit 1: debounce-fsmd_arch
+    Info (12023): Found entity 1: debounce
+Info (12021): Found 3 design units, including 1 entities, in source file output_files/altera_one_port_ram.vhd
+    Info (12022): Found design unit 1: altera_one_port_ram-beh_arch1
+    Info (12022): Found design unit 2: altera_one_port_ram-beh_arch2
+    Info (12023): Found entity 1: altera_one_port_ram
+Info (12127): Elaborating entity "codec_test" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at codec_test.vhd(30): object "i2c_idle" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at codec_test.vhd(41): object "codec_sample_tick" assigned a value but never read
+Info (12129): Elaborating entity "codec_top" using architecture "A:arch" for hierarchy "codec_top:codec_unit"
+Info (12129): Elaborating entity "i2c" using architecture "A:arch" for hierarchy "codec_top:codec_unit|i2c:i2c_unit"
+Info (12129): Elaborating entity "adc_dac" using architecture "A:arch" for hierarchy "codec_top:codec_unit|adc_dac:dac_adc_unit"
+Info (12129): Elaborating entity "fifo" using architecture "A:arch" for hierarchy "codec_top:codec_unit|fifo:fifo_adc_unit"
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:debounce_unit0"
+Info (12128): Elaborating entity "altera_one_port_ram" for hierarchy "altera_one_port_ram:ram_unit"
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "altera_one_port_ram:ram_unit|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 12
+        Info (286033): Parameter NUMWORDS_A set to 4096
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 12
+        Info (286033): Parameter NUMWORDS_B set to 4096
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "12"
+    Info (12134): Parameter "NUMWORDS_A" = "4096"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "12"
+    Info (12134): Parameter "NUMWORDS_B" = "4096"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_k1h1.tdf
+    Info (12023): Found entity 1: altsyncram_k1h1
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1440 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 7 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 1393 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4659 megabytes
+    Info: Processing ended: Wed Jan 29 20:07:17 2020
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
+
+

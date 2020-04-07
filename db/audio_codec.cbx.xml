@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="audio_codec">
+		<CBX_INST_ENTRY INSTANCE_NAME="|codec_test|altera_one_port_ram:ram_unit|altsyncram:ram_rtl_0" CBX_FILE_NAME="altsyncram_k1h1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

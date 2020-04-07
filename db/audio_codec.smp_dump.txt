@@ -1,0 +1,48 @@
+
+State Machine - |codec_test|state_reg
+Name state_reg.config_done state_reg.wait3 state_reg.wait2 state_reg.wait1 state_reg.playback_state state_reg.sample_state state_reg.next_reg state_reg.wait0 state_reg.config 
+state_reg.config 0 0 0 0 0 0 0 0 0 
+state_reg.wait0 0 0 0 0 0 0 0 1 1 
+state_reg.next_reg 0 0 0 0 0 0 1 0 1 
+state_reg.sample_state 0 0 0 0 0 1 0 0 1 
+state_reg.playback_state 0 0 0 0 1 0 0 0 1 
+state_reg.wait1 0 0 0 1 0 0 0 0 1 
+state_reg.wait2 0 0 1 0 0 0 0 0 1 
+state_reg.wait3 0 1 0 0 0 0 0 0 1 
+state_reg.config_done 1 0 0 0 0 0 0 0 1 
+
+State Machine - |codec_test|debounce:debounce_unit2|state_reg
+Name state_reg.wait1 state_reg.one state_reg.wait0 state_reg.zero 
+state_reg.zero 0 0 0 0 
+state_reg.wait0 0 0 1 1 
+state_reg.one 0 1 0 1 
+state_reg.wait1 1 0 0 1 
+
+State Machine - |codec_test|debounce:debounce_unit1|state_reg
+Name state_reg.wait1 state_reg.one state_reg.wait0 state_reg.zero 
+state_reg.zero 0 0 0 0 
+state_reg.wait0 0 0 1 1 
+state_reg.one 0 1 0 1 
+state_reg.wait1 1 0 0 1 
+
+State Machine - |codec_test|debounce:debounce_unit0|state_reg
+Name state_reg.wait1 state_reg.one state_reg.wait0 state_reg.zero 
+state_reg.zero 0 0 0 0 
+state_reg.wait0 0 0 1 1 
+state_reg.one 0 1 0 1 
+state_reg.wait1 1 0 0 1 
+
+State Machine - |codec_test|codec_top:codec_unit|i2c:i2c_unit|state_reg
+Name state_reg.turn state_reg.stop state_reg.scl_end state_reg.ack3 state_reg.ack2 state_reg.ack1 state_reg.data3 state_reg.data2 state_reg.data1 state_reg.scl_begin state_reg.start state_reg.idle 
+state_reg.idle 0 0 0 0 0 0 0 0 0 0 0 0 
+state_reg.start 0 0 0 0 0 0 0 0 0 0 1 1 
+state_reg.scl_begin 0 0 0 0 0 0 0 0 0 1 0 1 
+state_reg.data1 0 0 0 0 0 0 0 0 1 0 0 1 
+state_reg.data2 0 0 0 0 0 0 0 1 0 0 0 1 
+state_reg.data3 0 0 0 0 0 0 1 0 0 0 0 1 
+state_reg.ack1 0 0 0 0 0 1 0 0 0 0 0 1 
+state_reg.ack2 0 0 0 0 1 0 0 0 0 0 0 1 
+state_reg.ack3 0 0 0 1 0 0 0 0 0 0 0 1 
+state_reg.scl_end 0 0 1 0 0 0 0 0 0 0 0 1 
+state_reg.stop 0 1 0 0 0 0 0 0 0 0 0 1 
+state_reg.turn 1 0 0 0 0 0 0 0 0 0 0 1 
